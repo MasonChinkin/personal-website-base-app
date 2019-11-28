@@ -5,6 +5,7 @@ steps:
 
 - id: 'look in /workspace'
   name: 'ubuntu'
+  args: ['cd', 'personal-website-base-app']
   args: ['ls', '-a']
 
   # # npm install, build, and test
