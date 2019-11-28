@@ -24,7 +24,7 @@ steps:
   # build docker container
   - id: 'docker build'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/≈', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
 
   # push built container to container registry
   - id: 'docker push'
