@@ -4,7 +4,7 @@ steps:
   args: ['clone', 'https://github.com/MasonChinkin/personal-website-docker-compose']
   name: 'ubuntu'
   args: ['ls']
-  args: ['ls', 'personal-website-docker-compose']
+  # args: ['ls', 'personal-website-docker-compose']
 
   # # npm install, build, and test
   # - id: 'npm install'
