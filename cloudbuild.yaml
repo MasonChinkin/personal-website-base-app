@@ -5,8 +5,8 @@ steps:
   
 - id: tsup
   name: 'ubuntu'
-  args: ['ls', '-a']
-  # args: ['ls', 'personal-website-docker-compose']
+  args: ['ls']
+  args: ['ls', 'personal-website-docker-compose/nginx.conf']
 
   # # npm install, build, and test
   # - id: 'npm install'
