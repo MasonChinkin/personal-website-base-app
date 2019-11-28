@@ -1,15 +1,15 @@
-const express = require('express');
+const express = require('./node_modules/express');
 const path = require('path');
 
 // App
 const app = express();
-app.use('/reactapp', express.static('build'));
+app.use('/baseapp', express.static('build'));
 
-app.get('/reactapp', (req, res) => {
+app.get('/baseapp', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.get('/reactapp/ping', (req, res) => {
+app.get('/baseapp/ping', (req, res) => {
   return res.send('pong');
 });
 

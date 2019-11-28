@@ -1,0 +1,28 @@
+steps:
+  # npm install, build, and test
+  - id: 'npm install'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'install']
+
+  - id: 'npm run build'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'run', 'build']
+
+  - id: 'npm run test'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'run', 'test']
+
+  # build docker container
+  - id: 'docker build'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/portfolio-252919/home', '.']
+
+  # push built container to container registry
+  - id: 'docker push'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/portfolio-252919/home']
+
+  # push built container to container registry
+  - id: 'Deploy to GCE instance'
+    name: gcr.io/cloud-builders/gcloud
+    args: [ 'compute', 'instances', 'reset', 'home-1', --zone=us-central1-a ]
