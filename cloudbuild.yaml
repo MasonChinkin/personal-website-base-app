@@ -2,8 +2,10 @@ steps:
 - id: 'abcd'
   name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/MasonChinkin/personal-website-docker-compose']
+  
+- id: tsup
   name: 'ubuntu'
-  args: ['ls']
+  args: ['ls', '-a']
   # args: ['ls', 'personal-website-docker-compose']
 
   # # npm install, build, and test
