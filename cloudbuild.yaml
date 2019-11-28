@@ -1,4 +1,4 @@
-# steps:
+steps:
 # - id: 'abcd'
 #   name: gcr.io/cloud-builders/git
 #   args: ['clone', 'https://github.com/MasonChinkin/personal-website-docker-compose']
@@ -17,9 +17,9 @@
   name: 'node:12.10-alpine'
   args: ['npm', 'run', 'build']
 
-- id: 'npm run test'
-  name: 'node:12.10-alpine'
-  args: ['npm', 'run', 'test']
+# - id: 'npm run test'
+#   name: 'node:12.10-alpine'
+#   args: ['npm', 'run', 'test']
 
 # build docker container
 - id: 'docker build'
