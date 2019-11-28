@@ -6,8 +6,6 @@ steps:
 - id: 'look in /workspace'
   name: 'ubuntu'
   args: ['ls', '-a']
-  args: ['cd', '/workspace']
-  args: ['ls', '-a']
 
   # # npm install, build, and test
   # - id: 'npm install'
