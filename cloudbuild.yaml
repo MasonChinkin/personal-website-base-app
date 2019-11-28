@@ -2,7 +2,11 @@ steps:
 - id: 'clone docker compose & nginx'
   name: gcr.io/cloud-builders/git
   args: ['clone', 'https://github.com/MasonChinkin/personal-website-base-app']
+
+- id: 'look in /workspace'
   name: 'ubuntu'
+  args: ['ls', '-a']
+  args: ['cd', '/workspace']
   args: ['ls', '-a']
 
   # # npm install, build, and test
