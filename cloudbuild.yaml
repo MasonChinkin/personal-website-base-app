@@ -40,7 +40,7 @@ steps:
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
     args: ['config', 'set', 'project', '$PROJECT_ID']
-    args: ['beta', 'compute', '--project', '\"$PROJECT_ID\"', 'ssh', '--zone', 'us-central1-a', '\"portfolio\"']
+    # args: ['beta', 'compute', '--project', '\"$PROJECT_ID\"', 'ssh', '--zone', 'us-central1-a', '\"portfolio\"']
 
   - id: 'Update instance'
     name: ubuntu
