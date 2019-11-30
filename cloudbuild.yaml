@@ -43,7 +43,7 @@ steps:
 
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', '--zone', 'us-central1-a', "'portfolio'"]
+    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
 
   - id: 'list files'
     name: ubuntu
