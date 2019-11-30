@@ -42,7 +42,9 @@ steps:
     args: ['beta', 'compute', '--project', '"portfolio-252919"', 'ssh', '--zone', '"us-central1-a"', '"portfolio"']
 
   - id: 'Update instance'
+    name: ubuntu
     args: ['ls', '-a']
 
   - id: 'exit ssh into GCE instance'
+    name: ubuntu
     args: ['exit']
