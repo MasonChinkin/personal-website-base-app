@@ -43,6 +43,6 @@ steps:
 
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '--', 'sudo docker pull gcr.io/portfolio-252919/personal-website-homepage:latest']
+    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '--', 'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME']
 
 # docker pull gcr.io/portfolio-252919/personal-website-homepage:latest
