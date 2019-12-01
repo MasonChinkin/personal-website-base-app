@@ -44,5 +44,7 @@ steps:
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
     args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
-    entrypoint: ''
-    args: ['ls', '-a']
+
+  - id: 'do things'
+    names: ubuntu
+    args: ['ls', -a]
