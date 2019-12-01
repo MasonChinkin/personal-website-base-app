@@ -43,10 +43,8 @@ steps:
 
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
+    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '&&', 'ls', -a]
+
+  - id: 'list files'
     name: ubuntu
     args: ['ls', '-a']
-
-  - id: 'exit ssh into GCE instance'
-    name: ubuntu
-    args: ['exit']
