@@ -1,48 +1,24 @@
 steps:
-# - id: 'pull latest docker compose and nginx.conf'
-#   name: gcr.io/cloud-builders/git
-#   args: ['clone', 'https://github.com/MasonChinkin/personal-website-docker-compose']
-  
-# - id: tsup
-#   name: 'ubuntu'
-#   args: ['ls', '-a']
-#   args: ['ls', '-a', 'personal-website-docker-compose']
+- id: 'npm install'
+  name: 'node:12.10-alpine'
+  args: ['npm', 'install']
 
-  # npm install, build, and test
-  # - id: 'npm install'
-  #   name: 'node:12.10-alpine'
-  #   args: ['npm', 'install']
+- id: 'npm run build'
+  name: 'node:12.10-alpine'
+  args: ['npm', 'run', 'build']
 
-  # - id: 'npm run build'
-  #   name: 'node:12.10-alpine'
-  #   args: ['npm', 'run', 'build']
+- id: 'npm run test'
+  name: 'node:12.10-alpine'
+  args: ['npm', 'run', 'test']
 
-  # - id: 'npm run test'
-  #   name: 'node:12.10-alpine'
-  #   args: ['npm', 'run', 'test']
+- id: 'docker build'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
 
-  # # build docker container
-  # - id: 'docker build'
-  #   name: 'gcr.io/cloud-builders/docker'
-  #   args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
+- id: 'docker push'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
 
-  # # push built container to container registry
-  # - id: 'docker push'
-  #   name: 'gcr.io/cloud-builders/docker'
-  #   args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
-
-  # push built container to container registry
-  # - id: 'Deploy to GCE instance'
-  #   name: gcr.io/cloud-builders/gcloud
-  #   args: [ 'compute', 'instances', 'reset', 'home-1', --zone=us-central1-a ]
-
-  # ssh into GCE instance
-  # - id: 'set project'
-  #   name: gcr.io/cloud-builders/gcloud
-  #   args: ['config', 'set', 'project', '$PROJECT_ID']
-
-  - id: 'ssh into GCE instance'
-    name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '--', 'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME:latest']
-
-# docker pull gcr.io/portfolio-252919/personal-website-homepage:latest
+- id: 'ssh into GCE instance'
+  name: gcr.io/cloud-builders/gcloud
+  args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '--', 'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME:latest']
