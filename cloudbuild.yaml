@@ -1,5 +1,5 @@
 steps:
-# - id: 'abcd'
+# - id: 'pull latest docker compose and nginx.conf'
 #   name: gcr.io/cloud-builders/git
 #   args: ['clone', 'https://github.com/MasonChinkin/personal-website-docker-compose']
   
@@ -37,14 +37,12 @@ steps:
   #   args: [ 'compute', 'instances', 'reset', 'home-1', --zone=us-central1-a ]
 
   # ssh into GCE instance
-  - id: 'set project'
-    name: gcr.io/cloud-builders/gcloud
-    args: ['config', 'set', 'project', '$PROJECT_ID']
+  # - id: 'set project'
+  #   name: gcr.io/cloud-builders/gcloud
+  #   args: ['config', 'set', 'project', '$PROJECT_ID']
 
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '&&', 'ls', -a]
-
-  - id: 'list files'
-    name: ubuntu
+    args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
+    entrypoint: ''
     args: ['ls', '-a']
