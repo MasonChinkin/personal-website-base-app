@@ -46,5 +46,5 @@ steps:
     args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
 
   - id: 'do things'
-    names: ubuntu
+    name: ubuntu
     args: ['ls', -a]
