@@ -45,4 +45,6 @@ steps:
     name: gcr.io/cloud-builders/gcloud
     args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio']
     env:
-      - COMMAND= ls -a
+      - COMMAND=docker pull gcr.io/portfolio-252919/personal-website-homepage:latest
+
+# docker pull gcr.io/portfolio-252919/personal-website-homepage:latest
