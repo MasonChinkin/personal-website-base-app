@@ -7,11 +7,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          This is a base app for my personal website
-        </p>
-        <a
-          className="App-link"
+        <p>Base app for my personal website. Fork the repo to make new subdirectory.</p>
+        <a className="App-link"
           href="https://reactjs.org"
           target="_blank"
           rel="noopener noreferrer"

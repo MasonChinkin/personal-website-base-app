@@ -1,24 +1,32 @@
 steps:
-- id: 'npm install'
-  name: 'node:12.10-alpine'
-  args: ['npm', 'install']
-
-- id: 'npm run build'
-  name: 'node:12.10-alpine'
-  args: ['npm', 'run', 'build']
-
-- id: 'npm run test'
-  name: 'node:12.10-alpine'
-  args: ['npm', 'run', 'test']
-
-- id: 'docker build'
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
-
-- id: 'docker push'
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
-
-- id: 'ssh into GCE instance'
-  name: gcr.io/cloud-builders/gcloud
-  args: ['compute', 'ssh', '--zone', 'us-central1-a', 'portfolio', '--', 'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME:latest']
+  - id: 'npm install'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'install']
+  
+  - id: 'npm run build'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'run', 'build']
+  
+  - id: 'npm run test'
+    name: 'node:12.10-alpine'
+    args: ['npm', 'run', 'test']
+  
+  - id: 'docker build'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/$REPO_NAME', '.']
+  
+  - id: 'docker push'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/$REPO_NAME']
+  
+  - id: 'ssh into GCE instance'
+    name: gcr.io/cloud-builders/gcloud
+    args: [
+      'compute',
+      'ssh',
+      '--zone',
+      'us-central1-a',
+      'portfolio',
+      '--',
+      'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME && sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build baseapp && sudo docker ps'
+    ]
