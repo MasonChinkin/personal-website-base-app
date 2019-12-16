@@ -30,5 +30,6 @@ steps:
       '--',
       'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME',
       '&& sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build baseapp',
+      '&& sudo docker system prune -a -f',
       '&& sudo docker ps'
     ]
