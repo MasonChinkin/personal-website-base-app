@@ -21,8 +21,6 @@ steps:
   
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    env:
-      - 'APP=baseapp'
     args: [
       'compute',
       'ssh',
@@ -31,6 +29,6 @@ steps:
       'portfolio',
       '--',
       'sudo docker pull gcr.io/$PROJECT_ID/$REPO_NAME',
-      '&& sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build $APP',
+      '&& sudo docker-compose -f ../chinkinma_gmail_com/personal-website-docker-compose/docker-compose.yaml up -d --no-deps --build baseapp',
       '&& sudo docker ps'
     ]

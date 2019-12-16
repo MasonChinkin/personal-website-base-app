@@ -1,19 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Base app for my personal website setup. Fork the repo to make new subdirectory.</p>
+        <p>Base app for my personal website setup. Fork the repo linked below to make new subdirectory.</p>
         <a className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/MasonChinkin/personal-website-base-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          LINK
         </a>
       </header>
     </div>
