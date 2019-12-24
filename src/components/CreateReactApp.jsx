@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../logo.svg';
 
-function App() {
+function CreateReactApp() {
   return (
     <div className="App">
       <header className="App-header">
@@ -23,4 +23,4 @@ function App() {
   );
 }
 
-export default App;
+export default CreateReactApp;
