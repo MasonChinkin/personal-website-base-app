@@ -40,4 +40,4 @@ steps:
     args:
     - '-c'
     - |
-      curl -s 'https://pets.doingdevops.com/pet' --max-time 10
+      for i in $(gcloud compute os-login ssh-keys list | grep -v FINGERPRINT); do echo $i; gcloud compute os-login ssh-keys remove --key $i; done
