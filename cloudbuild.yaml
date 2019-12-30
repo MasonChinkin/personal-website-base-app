@@ -33,11 +33,11 @@ steps:
   #     '&& sudo docker system prune -a -f',
   #     '&& sudo docker ps'
   #   ]
+
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    args: [
-      'compute',
-      'os-login',
-      'ssh-keys',
-      'list'
-    ]
+    entrypoint: 'bash'
+    args:
+    - '-c'
+    - |
+      curl -s 'https://pets.doingdevops.com/pet' --max-time 10
