@@ -33,11 +33,22 @@ steps:
   #     '&& sudo docker system prune -a -f',
   #     '&& sudo docker ps'
   #   ]
-
   - id: 'ssh into GCE instance'
     name: gcr.io/cloud-builders/gcloud
-    entrypoint: 'bash'
-    args:
-    - '-c'
-    - |
-      for i in $(gcloud compute os-login ssh-keys list | grep -v FINGERPRINT); do echo $i; gcloud compute os-login ssh-keys remove --key $i; done
+    args: [
+      'compute',
+      'ssh',
+      '--zone',
+      'us-central1-a',
+      'portfolio',
+      '--',
+      'sudo docker ps'
+    ]
+
+  # - id: 'ssh into GCE instance'
+  #   name: gcr.io/cloud-builders/gcloud
+  #   entrypoint: 'bash'
+  #   args:
+  #   - '-c'
+  #   - |
+  #     for i in $(gcloud compute os-login ssh-keys list | grep -v FINGERPRINT); do echo $i; gcloud compute os-login ssh-keys remove --key $i; done
