@@ -42,5 +42,5 @@ steps:
       'us-central1-a',
       'portfolio',
       '--',
-      '&& sudo docker ps'
+      'gcloud compute os-login ssh-keys list'
     ]
